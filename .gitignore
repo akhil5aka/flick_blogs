@@ -1,0 +1,8 @@
+
+assets/
+content/
+node_modules/
+.env
+output_archive/
+archivein/
+*.xlsx
