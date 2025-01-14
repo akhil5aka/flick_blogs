@@ -9,7 +9,10 @@ interface PostData {
   }
 
 
-const STRAPI_API_URL = "http://localhost:1337/api";
+// const STRAPI_API_URL = "http://localhost:1337/api";
+
+const STRAPI_API_URL = process.env.STRAPI_API_URL;
+
 
 // Function to load homepage data
 export const loadhomepage = async (): Promise<HomePageData> => {
@@ -35,7 +38,8 @@ export const loadhomepage = async (): Promise<HomePageData> => {
 // Function to load posts data
 export const loadposts = async (): Promise<PostResponse> => {
   try {
-    const response = await fetch(`${STRAPI_API_URL}/posts?populate=image`, {
+    // const response = await fetch(`${STRAPI_API_URL}/posts?populate=image`, {
+      const response = await fetch(`${STRAPI_API_URL}/blog-posts?populate=image`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +61,8 @@ export const loadposts = async (): Promise<PostResponse> => {
 export const loadPostBySlug = async (slug: string): Promise<PostResponse> => {
   try {
     const response = await fetch(
-      `${STRAPI_API_URL}/posts?filters[slug][$eq]=${slug}&populate=image`
+      // `${STRAPI_API_URL}/posts?filters[slug][$eq]=${slug}&populate=image`
+      `${STRAPI_API_URL}/blog-posts?filters[slug][$eq]=${slug}&populate=image`
     );
 
     if (!response.ok) {
@@ -74,7 +79,8 @@ export const loadPostBySlug = async (slug: string): Promise<PostResponse> => {
 // Function to load all slugs for generating static paths
 export const loadapaths = async (): Promise<SlugPath[]> => {
   try {
-    const response = await fetch(`${STRAPI_API_URL}/posts`, {
+    // const response = await fetch(`${STRAPI_API_URL}/posts`, {
+      const response = await fetch(`${STRAPI_API_URL}/blog-posts`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

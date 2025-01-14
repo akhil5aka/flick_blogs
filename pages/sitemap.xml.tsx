@@ -21,7 +21,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   try {
     // Fetch posts from the API
-    const apiEndpoint = `${baseUrl}/api/posts`;
+    // const apiEndpoint = `${baseUrl}/api/posts`;
+    const apiEndpoint = `${baseUrl}/api/blog-posts`;
     console.log("API Endpoint:", apiEndpoint); // Useful for development
 
     const response = await axios.get(apiEndpoint);

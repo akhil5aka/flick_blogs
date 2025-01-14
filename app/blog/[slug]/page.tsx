@@ -3,9 +3,10 @@ import { loadPostBySlug, loadposts } from "../../api/savepost/api_serivice";
 import styles from "../../../page.module.css";
 import { Post, PostResponse } from "../../../hometypes";
 
+
 interface Props {
   params: Promise<{ slug: string }>; // Make params a Promise
-}
+} 
 export default async function PostDetails({ params }: Props) {
   try {
     const { slug } = await params; // Extract slug from params

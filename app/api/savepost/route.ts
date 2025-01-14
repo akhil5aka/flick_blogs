@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
-const STRAPI_API_URL = "http://localhost:1337/api"; // Replace with your Strapi instance URL
+// const STRAPI_API_URL = "http://localhost:1337/api"; // Replace with your Strapi instance URL
+const STRAPI_API_URL = process.env.STRAPI_API_URL; // Replace with your Strapi instance URL
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
@@ -66,7 +67,8 @@ export async function POST(req: Request): Promise<NextResponse> {
       thumbnail: thumbnailId, // Attach the uploaded file ID
     };
 
-    const blogResponse = await fetch(`${STRAPI_API_URL}/blogs`, {
+    // const blogResponse = await fetch(`${STRAPI_API_URL}/blogs`, {
+      const blogResponse = await fetch(`${STRAPI_API_URL}/blog-posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
